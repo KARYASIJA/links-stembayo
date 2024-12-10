@@ -34,19 +34,19 @@ export default function Home() {
           </p>
           <p className='mt-1 italic text-black'>{data.descriptionTwo}</p>
           <div>
-            <Divider text='Sekolah' />
+            <Divider title='Sekolah' />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionOne.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
-            <Divider text='Lain-lain' />
+            <Divider title='Lain-lain' />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionTwo.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
-            <Divider text='Lokasi' />
+            <Divider title='Lokasi' />
             <GoogleMapEmbed />
             <Divider />
           </div>
@@ -56,7 +56,7 @@ export default function Home() {
             ))}
           </div>
           <div className='flex justify-center my-8 text-black'>
-            <span>© 2024 Tim Karya Web STEMBAYO</span>
+            <span>&copy; 2024 Tim Karya Web STEMBAYO</span>
           </div>
         </div>
       </div>
