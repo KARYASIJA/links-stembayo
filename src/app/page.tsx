@@ -9,7 +9,7 @@ import Divider from './components/Divider';
 
 export default function Home() {
   return (
-    <div className='flex mx-auto main min-h-screen max-w-screen w-full flex-col'>
+    <div className='flex mx-auto main min-h-screen w-full flex-col'>
       <div className='flex items-center flex-col justify-center'>
         <Image
           className='z-0 max-h-60 lg:max-h-44 object-cover w-full'
@@ -21,7 +21,7 @@ export default function Home() {
         />
         <Image
           priority
-          className='rounded-full z-10 -mt-20 h-40 w-auto aspect-square'
+          className='z-10 -mt-20 h-40 w-auto aspect-square'
           alt={data.name}
           src={data.avatar}
           width={200}
@@ -34,19 +34,19 @@ export default function Home() {
           </p>
           <p className='mt-1 italic text-black'>{data.descriptionTwo}</p>
           <div>
-            <Divider text='skul' />
+            <Divider text='Sekolah' />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionOne.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
-            <Divider text='opo iki' />
+            <Divider text='Lain-lain' />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionTwo.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
-            <Divider text='katakan peta' />
+            <Divider text='Lokasi' />
             <GoogleMapEmbed />
             <Divider />
           </div>
