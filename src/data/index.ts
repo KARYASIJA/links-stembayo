@@ -25,7 +25,7 @@ const data: Data = {
     {
       href: 'https://elearning.smkn2depoksleman.sch.id',
       title: 'Website E-Learning',
-      image: '/book.png',
+      image: '/logo-elearning.png',
     },
   ],
   sectionTwo: [
