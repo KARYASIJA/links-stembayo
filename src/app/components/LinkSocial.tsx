@@ -7,10 +7,13 @@ import {
   SiInstagram,
   SiLinkedin,
   SiKeybase,
+  SiFacebook,
+  SiYoutube,
+  SiTiktok,
 } from 'react-icons/si';
 import { Social } from '@/typings';
 
-const LinkSocial: React.FC<Social> = ({ href, title }) => {
+const LinkSocial = ({ href, title }: Social) => {
   const getIcon = () => {
     if (title.includes('email')) return <SiMaildotru size='26px' />;
     if (title.includes('twitter')) return <SiTwitter size='30px' />;
@@ -18,6 +21,9 @@ const LinkSocial: React.FC<Social> = ({ href, title }) => {
     if (title.includes('github')) return <SiGithub size='26px' />;
     if (title.includes('linkedin')) return <SiLinkedin size='26px' />;
     if (title.includes('keybase')) return <SiKeybase size='26px' />;
+    if (title.includes('facebook')) return <SiFacebook size='26px' />;
+    if (title.includes('youtube')) return <SiYoutube size='26px' />;
+    if (title.includes('tiktok')) return <SiTiktok size='26px' />;
     return null;
   };
 
@@ -26,6 +32,7 @@ const LinkSocial: React.FC<Social> = ({ href, title }) => {
       aria-label={`${title} link`}
       href={href}
       target='_blank'
+      draggable={false}
       rel='noopener noreferrer'
       className='hover:scale-110 transition-all'
     >

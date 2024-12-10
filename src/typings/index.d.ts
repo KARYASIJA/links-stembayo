@@ -21,5 +21,5 @@ export interface Data {
 }
 
 export interface DividerProps {
-  text?: string;
+  title?: string;
 }

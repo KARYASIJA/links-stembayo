@@ -37,12 +37,24 @@ const data: Data = {
   ],
   socials: [
     {
-      href: 'mailto:contact@rizkyfauzan.id',
+      href: 'mailto:info@smkn2depoksleman.sch.id',
       title: 'email',
     },
     {
-      href: 'https://instagram.com/fauzannnnh',
+      href: 'https://www.instagram.com/smkn2depoksleman.official/',
       title: 'instagram',
+    },
+    {
+      href: 'https://web.facebook.com/stembayolover/',
+      title: 'facebook',
+    },
+    {
+      href: 'https://www.youtube.com/@smkn2depoksleman/',
+      title: 'youtube',
+    },
+    {
+      href: 'https://www.tiktok.com/@smkn2depoksleman',
+      title: 'tiktok',
     },
   ],
 };
