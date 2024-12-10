@@ -9,7 +9,7 @@ import Divider from './components/Divider';
 
 export default function Home() {
   return (
-    <div className='flex mx-auto main min-h-screen w-full flex-col'>
+    <div className='flex mx-auto min-h-screen w-full flex-col'>
       <div className='flex items-center flex-col justify-center'>
         <Image
           className='z-0 max-h-60 lg:max-h-44 object-cover w-full'
