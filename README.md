@@ -1,4 +1,1 @@
-# Links
-
-Linktree Clone
-
+# SMK Negeri 2 Depok Sleman Links
