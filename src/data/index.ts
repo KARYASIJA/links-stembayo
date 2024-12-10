@@ -22,6 +22,11 @@ const data: Data = {
       title: 'Website Perpustakaan',
       image: '/book.png',
     },
+    {
+      href: 'https://elearning.smkn2depoksleman.sch.id',
+      title: 'Website E-Learning',
+      image: '/book.png',
+    },
   ],
   sectionTwo: [
     {
