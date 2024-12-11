@@ -17,6 +17,7 @@ export interface Data {
   descriptionTwo: string;
   sectionOne: Link[];
   sectionTwo: Link[];
+  sectionThree: Link[];
   socials: Social[];
 }
 

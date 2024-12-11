@@ -12,12 +12,12 @@ const LinkCard = ({ href, title, image }: Link) => {
       rel='noopener noreferrer'
       className='flex gap-2 items-center max-h-14 p-2 w-full rounded-md hover:scale-105 transition-all bg-gray-100 select-none'
     >
-      <div className='flex items-center w-9 object-fit bg-gray-200 rounded-lg p-0.5 aspect-square object-cover'>
+      <div className='flex items-center w-9 h-9 bg-gray-200 rounded-lg p-0.5'>
         {image && (
           <Image
             className='rounded-sm'
             alt={title}
-            src={image}
+            src={`/${image}`}
             width={100}
             height={100}
           />
