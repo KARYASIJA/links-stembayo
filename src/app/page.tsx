@@ -14,7 +14,7 @@ export default function Home() {
         <Image
           className='z-0 max-h-60 lg:max-h-44 object-cover w-full'
           alt={data.name}
-          src={data.banner}
+          src={`/${data.banner}`}
           width={1500}
           height={500}
           loading='lazy'
@@ -23,29 +23,35 @@ export default function Home() {
           priority
           className='z-10 -mt-20 h-40 w-auto aspect-square'
           alt={data.name}
-          src={data.avatar}
+          src={`/${data.avatar}`}
           width={200}
           height={200}
         />
-        <div className='px-6 text-center'>
+        <div className='px-6 text-center max-w-lg w-full'>
           <h1 className='font-bold mt-2 text-2xl text-black'>{data.name}</h1>
           <p className='mt-1 font-bold text-xl text-black'>
             {data.descriptionOne}
           </p>
           <p className='mt-1 italic text-black'>{data.descriptionTwo}</p>
           <div>
-            <Divider title='Sekolah' />
+            <Divider />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionOne.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
-            <Divider title='Lain-lain' />
+            <Divider title='Layanan Lain' />
               <div className='flex flex-col gap-3 items-center w-full'>
                 {data.sectionTwo.map((link) => (
                   <LinkCard key={link.href} {...link} />
                 ))}
               </div>
+            <Divider title='Lain-lain' />
+            <div className='flex flex-col gap-3 items-center w-full'>
+              {data.sectionThree.map((link) => (
+                  <LinkCard key={link.href} {...link} />
+              ))}
+            </div>
             <Divider title='Lokasi' />
             <GoogleMapEmbed />
             <Divider />
