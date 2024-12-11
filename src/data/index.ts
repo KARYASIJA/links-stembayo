@@ -50,7 +50,7 @@ const data: Data = {
       image: 'book.png',
     },
     {
-      href: 'https://elearning.smkn2depoksleman.sch.id',
+      href: 'https://elearning.stembayo.sch.id',
       title: 'Website E-Learning',
       image: 'logo-elearning.png',
     },
