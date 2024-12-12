@@ -14,8 +14,13 @@ const data: Data = {
     },
     {
       href: 'mailto:info@smkn2depoksleman.sch.id',
-      title: 'Email Resmi',
+      title: 'Email',
       image: 'logo-gmail.svg',
+    },
+    {
+      href: 'https://api.whatsapp.com/send/?phone=6282110010708',
+      title: 'Whatsapp',
+      image: 'logo-whatsapp.svg',
     },
     {
       href: 'https://www.instagram.com/smkn2depoksleman.official/',
