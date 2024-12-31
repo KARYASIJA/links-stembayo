@@ -16,10 +16,11 @@ const LinkCard = ({ href, title, image }: Link) => {
         {image && (
           <Image
             className='rounded-sm'
-            alt={title}
+            alt=''
             src={`/${image}`}
             width={100}
             height={100}
+            sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
           />
         )}
       </div>

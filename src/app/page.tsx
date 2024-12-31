@@ -12,20 +12,21 @@ export default function Home() {
     <div className='flex mx-auto min-h-screen w-full flex-col'>
       <div className='flex items-center flex-col justify-center'>
         <Image
+          priority
           className='z-0 max-h-60 lg:max-h-44 object-cover w-full'
           alt={data.name}
           src={`/${data.banner}`}
           width={1500}
           height={500}
-          loading='lazy'
+          sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
         />
         <Image
-          priority
           className='z-10 -mt-20 h-40 w-auto aspect-square'
           alt={data.name}
           src={`/${data.avatar}`}
           width={200}
           height={200}
+          sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
         />
         <div className='px-6 text-center max-w-lg w-full'>
           <h1 className='font-bold mt-2 text-2xl text-black'>{data.name}</h1>
