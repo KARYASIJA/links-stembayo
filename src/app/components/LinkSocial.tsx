@@ -24,6 +24,7 @@ const LinkSocial = ({ href, title }: Social) => {
     if (title.includes('facebook')) return <SiFacebook size='26px' />;
     if (title.includes('youtube')) return <SiYoutube size='26px' />;
     if (title.includes('tiktok')) return <SiTiktok size='26px' />;
+    if (title.includes('linkedin')) return <SiLinkedin size='26px' />;
     return null;
   };
 

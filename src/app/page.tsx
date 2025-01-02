@@ -16,17 +16,17 @@ export default function Home() {
           className='z-0 max-h-60 lg:max-h-44 object-cover w-full'
           alt={data.name}
           src={`/${data.banner}`}
-          width={1500}
-          height={500}
-          sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
+          width={900}
+          height={300}
+          sizes="(max-width: 960px) 25vw, (max-width: 1280px) 40vw, (max-width: 1440px) 50vw, 75vw"
         />
         <Image
           className='z-10 -mt-20 h-40 w-auto aspect-square'
           alt={data.name}
           src={`/${data.avatar}`}
-          width={200}
-          height={200}
-          sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
+          width={100}
+          height={100}
+          sizes="(max-width: 960px) 25vw, (max-width: 1280px) 40vw, (max-width: 1440px) 50vw, 75vw"
         />
         <div className='px-6 text-center max-w-lg w-full'>
           <h1 className='font-bold mt-2 text-2xl text-black'>{data.name}</h1>
