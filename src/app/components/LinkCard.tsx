@@ -18,8 +18,8 @@ const LinkCard = ({ href, title, image }: Link) => {
             className='rounded-sm'
             alt=''
             src={`/${image}`}
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             sizes="(min-width: 960px) 65vw, (min-width: 1280px) 80vw, (min-width: 1440px) 100vw, 50vw"
           />
         )}

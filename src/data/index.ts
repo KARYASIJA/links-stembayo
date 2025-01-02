@@ -28,6 +28,11 @@ const data: Data = {
       image: 'logo-instagram.svg',
     },
     {
+      href: 'https://www.linkedin.com/school/smkn2depoksleman/',
+      title: 'Linkedin SMKN 2 Depok Sleman',
+      image: 'logo-linkedin.svg',
+    },
+    {
       href: 'https://web.facebook.com/stembayolover/',
       title: 'Facebook @stembayolover',
       image: 'logo-facebook.svg',
@@ -98,12 +103,12 @@ const data: Data = {
       title: 'email',
     },
     {
-      href: 'https://www.instagram.com/smkn2depoksleman.official/',
-      title: 'instagram',
-    },
-    {
       href: 'https://web.facebook.com/stembayolover/',
       title: 'facebook',
+    },
+    {
+      href: 'https://www.linkedin.com/school/smkn2depoksleman/',
+      title: 'linkedin',
     },
     {
       href: 'https://www.youtube.com/@smkn2depoksleman/',
@@ -112,6 +117,10 @@ const data: Data = {
     {
       href: 'https://www.tiktok.com/@smkn2depoksleman',
       title: 'tiktok',
+    },
+    {
+      href: 'https://www.instagram.com/smkn2depoksleman.official/',
+      title: 'instagram',
     },
   ],
 };
