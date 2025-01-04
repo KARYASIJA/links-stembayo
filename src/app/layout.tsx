@@ -7,8 +7,8 @@ const cabinetGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'SMK Negeri 2 Depok Sleman | STEMBAYO',
-  description: 'SMK Negeri 2 Depok Sleman | STEMBAYO',
+  title: 'Link SMK Negeri 2 Depok Sleman | STEMBAYO',
+  description: 'Link Sosial, website, dan kontak email SMK Negeri 2 Depok Sleman Yogyakarta (STEMBAYO)',
 };
 
 export default function RootLayout({
