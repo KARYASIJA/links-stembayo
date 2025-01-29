@@ -18,7 +18,7 @@ const data: Data = {
       image: 'logo-gmail.svg',
     },
     {
-      href: 'https://api.whatsapp.com/send/?phone=6282110010708',
+      href: 'https://api.whatsapp.com/send/?phone=6283160614007',
       title: 'Whatsapp',
       image: 'logo-whatsapp.svg',
     },
