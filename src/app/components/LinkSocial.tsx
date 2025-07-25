@@ -1,5 +1,4 @@
-'use client';
-
+'use client';;
 import {
   SiMaildotru,
   SiTwitter,
@@ -12,6 +11,8 @@ import {
   SiTiktok,
 } from 'react-icons/si';
 import { Social } from '@/typings';
+
+import type { JSX } from "react";
 
 const ICON_MAP: Record<string, JSX.Element> = {
   email: <SiMaildotru size='26px' />,
