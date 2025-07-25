@@ -13,21 +13,19 @@ import {
 } from 'react-icons/si';
 import { Social } from '@/typings';
 
-const LinkSocial = ({ href, title }: Social) => {
-  const getIcon = () => {
-    if (title.includes('email')) return <SiMaildotru size='26px' />;
-    if (title.includes('twitter')) return <SiTwitter size='30px' />;
-    if (title.includes('instagram')) return <SiInstagram size='26px' />;
-    if (title.includes('github')) return <SiGithub size='26px' />;
-    if (title.includes('linkedin')) return <SiLinkedin size='26px' />;
-    if (title.includes('keybase')) return <SiKeybase size='26px' />;
-    if (title.includes('facebook')) return <SiFacebook size='26px' />;
-    if (title.includes('youtube')) return <SiYoutube size='26px' />;
-    if (title.includes('tiktok')) return <SiTiktok size='26px' />;
-    if (title.includes('linkedin')) return <SiLinkedin size='26px' />;
-    return null;
-  };
+const ICON_MAP: Record<string, JSX.Element> = {
+  email: <SiMaildotru size='26px' />,
+  twitter: <SiTwitter size='30px' />,
+  instagram: <SiInstagram size='26px' />,
+  github: <SiGithub size='26px' />,
+  linkedin: <SiLinkedin size='26px' />,
+  keybase: <SiKeybase size='26px' />,
+  facebook: <SiFacebook size='26px' />,
+  youtube: <SiYoutube size='26px' />,
+  tiktok: <SiTiktok size='26px' />,
+};
 
+const LinkSocial = ({ href, title, icon }: Social) => {
   return (
     <a
       aria-label={`${title} link`}
@@ -37,7 +35,7 @@ const LinkSocial = ({ href, title }: Social) => {
       rel='noopener noreferrer'
       className='hover:scale-110 transition-all'
     >
-      {getIcon()}
+      {ICON_MAP[icon] || null}
     </a>
   );
 };

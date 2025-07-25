@@ -5,8 +5,9 @@ export interface Link {
 }
 
 export interface Social {
-  href: string;
   title: string;
+  href: string;
+  icon: string;
 }
 
 export interface Data {
