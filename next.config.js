@@ -3,12 +3,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'ik.imagekit.io',
-        port: '',
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
       },
     ],
   },
+  distDir: "build",
 };
 
 module.exports = nextConfig;
