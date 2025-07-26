@@ -7,13 +7,23 @@ import LinkCard from "@/app/components/LinkCard";
 import LinkSocial from "@/app/components/LinkSocial";
 import GoogleMapEmbed from "./components/GoogleMap";
 import Divider from "./components/Divider";
+import { FiSettings } from "react-icons/fi";
 
-const FETCH_INTERVAL = 600000;
+const FETCH_INTERVAL = 300000;
 
 export default function Home() {
   const [links, setLinks] = useState<any[]>([]);
   const [socials, setSocials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        setIsLoggedIn(!!data?.user);
+      });
+  }, []);
 
   const fetchAllData = async () => {
     setLoading(true);
@@ -68,10 +78,10 @@ export default function Home() {
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-amber-100"
+                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
-                    <div className="w-9 h-9 bg-amber-200 rounded-lg" />
-                    <div className="h-6 w-32 bg-amber-200 rounded" />
+                    <div className="w-9 h-9 bg-gray-300 rounded-lg" />
+                    <div className="h-6 w-32 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -80,10 +90,10 @@ export default function Home() {
                 {[...Array(2)].map((_, i) => (
                   <div
                     key={i}
-                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-amber-100"
+                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
-                    <div className="w-9 h-9 bg-amber-200 rounded-lg" />
-                    <div className="h-6 w-24 bg-amber-200 rounded" />
+                    <div className="w-9 h-9 bg-gray-300 rounded-lg" />
+                    <div className="h-6 w-24 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -92,10 +102,10 @@ export default function Home() {
                 {[...Array(1)].map((_, i) => (
                   <div
                     key={i}
-                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-amber-100"
+                    className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
-                    <div className="w-9 h-9 bg-amber-200 rounded-lg" />
-                    <div className="h-6 w-20 bg-amber-200 rounded" />
+                    <div className="w-9 h-9 bg-gray-300 rounded-lg" />
+                    <div className="h-6 w-20 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -107,7 +117,7 @@ export default function Home() {
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className="animate-pulse h-10 w-10 bg-amber-200 rounded-full"
+                  className="animate-pulse h-10 w-10 bg-gray-100 rounded-full"
                 />
               ))}
             </div>
@@ -185,6 +195,15 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {isLoggedIn && (
+        <button
+          onClick={() => (window.location.href = "/config")}
+          className="fixed bottom-6 right-6 bg-[#f0e3ca] hover:bg-[#e0d3b8] text-black rounded-full p-4 shadow-lg border border-black transition-all z-50"
+          title="Buka halaman konfigurasi"
+        >
+          <FiSettings size={32} />
+        </button>
+      )}
     </div>
   );
 }

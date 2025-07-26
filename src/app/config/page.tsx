@@ -374,11 +374,9 @@ export default function ConfigPage() {
   if (loading)
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-amber-400 mb-6"></div>
-        <div className="text-xl font-semibold text-amber-800 mb-2">
-          Memuat data...
-        </div>
-        <div className="text-amber-500">Mohon tunggu sebentar</div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-black mb-6"></div>
+        <div className="text-xl font-semibold text-blac">Memuat data...</div>
+        <div className="text-black">Mohon tunggu sebentar</div>
       </div>
     );
   if (!user) return null;
@@ -389,25 +387,42 @@ export default function ConfigPage() {
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4 bg-gradient-to-br from-amber-50 to-orange-50 min-h-screen">
+      <button
+        onClick={() => router.push("/")}
+        className="fixed bottom-6 right-6 bg-[#f0e3ca] hover:bg-[#e0d3b8] text-amber-900 rounded-full p-4 shadow-lg border border-black transition-all z-50"
+        title="Kembali ke halaman utama"
+      >
+        <span className="font-bold text-lg">🏠</span>
+      </button>
       {modalOpen && (
         <div
           className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"
           style={{ background: "rgba(0,0,0,0.2)" }}
         >
-          <div className="bg-white rounded-lg shadow-lg px-8 py-6 text-amber-900 font-bold text-lg border border-amber-300">
+          <div className="bg-white rounded-lg shadow-lg px-8 py-6 text-black font-bold text-lg border border-black">
             {modalMessage}
           </div>
         </div>
       )}
 
-      <div className="bg-[#f6eede] rounded-xl shadow-lg p-8 border border-amber-200">
-        <h1 className="text-3xl font-bold mb-4 text-amber-900">
+      <div className="bg-[#f6eede] rounded-xl shadow-lg p-8 border border-black">
+        <h1 className="text-3xl font-bold mb-4 text-black">
           Konfigurasi Link & Sosial
         </h1>
-        <p className="mb-8 text-amber-800 text-lg">
-          Selamat datang,{" "}
-          <span className="font-semibold text-amber-900">{user.username}</span>!
-        </p>
+        <div className="flex items-center justify-between mb-8">
+          <p className="text-black text-lg">
+            Selamat datang,{" "}
+            <span className="font-semibold black">{user.username}</span>!
+          </p>
+          <form onSubmit={handleLogout}>
+            <button
+              className="bg-gray-100 hover:bg-gray-200 text-black px-4 py-2 rounded-lg font-semibold transition-all duration-200 border border-gray-300 hover:border-gray-400 ml-4"
+              type="submit"
+            >
+              🚪 Logout
+            </button>
+          </form>
+        </div>
 
         {/*
         <div className="mb-4 p-4 bg-gray-100 rounded">
@@ -419,7 +434,7 @@ export default function ConfigPage() {
           </pre>
         </div> */}
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-amber-900 border-b-2 border-amber-300 pb-2">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-black border-b-2 border-black pb-2">
           Link Utama
         </h2>
         <DndContext
@@ -450,12 +465,12 @@ export default function ConfigPage() {
         </DndContext>
         <button
           onClick={() => addNewLink("main")}
-          className="w-full bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-amber-300 hover:border-amber-400 shadow-sm hover:shadow-md disabled:opacity-50"
+          className="w-full bg-white hover:bg-gray-200 text-black font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-black hover:border-black shadow-sm hover:shadow-md disabled:opacity-50"
         >
           + Tambah Link Utama
         </button>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-amber-900 border-b-2 border-amber-300 pb-2">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-black border-b-2 border-black pb-2">
           Layanan Lain
         </h2>
         <DndContext
@@ -486,12 +501,12 @@ export default function ConfigPage() {
         </DndContext>
         <button
           onClick={() => addNewLink("service")}
-          className="w-full bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-amber-300 hover:border-amber-400 shadow-sm hover:shadow-md disabled:opacity-50"
+          className="w-full bg-white hover:bg-gray-200 text-black font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-black hover:border-black shadow-sm hover:shadow-md disabled:opacity-50"
         >
           + Tambah Layanan Lain
         </button>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-amber-900 border-b-2 border-amber-300 pb-2">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-black border-b-2 border-black pb-2">
           Lain-lain
         </h2>
         <DndContext
@@ -522,12 +537,12 @@ export default function ConfigPage() {
         </DndContext>
         <button
           onClick={() => addNewLink("other")}
-          className="w-full bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-amber-300 hover:border-amber-400 shadow-sm hover:shadow-md disabled:opacity-50"
+          className="w-full bg-white hover:bg-gray-200 text-amber-900 font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-black hover:border-black shadow-sm hover:shadow-md disabled:opacity-50"
         >
           + Tambah Lain-lain
         </button>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4 text-amber-900 border-b-2 border-amber-300 pb-2">
+        <h2 className="text-2xl font-semibold mt-8 mb-4 text-black border-b-2 border-black pb-2">
           Sosial Media (Urutan Dari Kiri ke Kanan)
         </h2>
         <DndContext
@@ -555,26 +570,18 @@ export default function ConfigPage() {
         </DndContext>
         <button
           onClick={addNewSocial}
-          className="w-full bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-amber-300 hover:border-amber-400 shadow-sm hover:shadow-md disabled:opacity-50"
+          className="w-full bg-white hover:bg-gray-200 text-black font-semibold py-3 rounded-lg mt-3 transition-all duration-200 border border-black hover:border-black shadow-sm hover:shadow-md disabled:opacity-50"
         >
           + Tambah Social
         </button>
 
         <button
           onClick={handleSaveAll}
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 rounded-lg mt-8 transition-all duration-200 shadow-md hover:shadow-lg text-lg"
+          className="w-full bg-gray-100 hover:bg-gray-200 text-black font-bold py-4 rounded-lg mt-8 transition-all duration-200 shadow-md hover:shadow-lg text-lg"
         >
           💾 Simpan Semua Perubahan
         </button>
 
-        <form onSubmit={handleLogout}>
-          <button
-            className="mt-6 w-full bg-amber-300 hover:bg-amber-400 text-amber-900 px-4 py-3 rounded-lg font-semibold transition-all duration-200 border border-amber-400 hover:border-amber-500"
-            type="submit"
-          >
-            🚪 Logout
-          </button>
-        </form>
       </div>
     </div>
   );

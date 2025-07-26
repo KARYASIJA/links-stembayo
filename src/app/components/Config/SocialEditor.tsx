@@ -71,13 +71,13 @@ export default function SocialEditor({
 
   return (
     <form
-      className="flex flex-wrap items-center gap-2 bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-amber-200 hover:shadow-md hover:border-amber-300 transition-all duration-200 relative group max-w-full overflow-x-auto"
+      className="flex flex-wrap items-center gap-2 bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-gray-500 hover:shadow-md hover:border-black transition-all duration-200 relative group max-w-full overflow-x-auto"
       style={{ minHeight: 52 }}
       onSubmit={(e) => e.preventDefault()}
     >
       <div
         {...dragHandleProps}
-        className="text-amber-300 group-hover:text-amber-500 cursor-grab select-none mr-2"
+        className="text-gray-500 group-hover:text-black cursor-grab select-none mr-2"
         title="Drag to reorder"
         style={{ alignSelf: "flex-start", marginTop: 2 }}
       >
@@ -94,7 +94,7 @@ export default function SocialEditor({
         value={title}
         onChange={(e) => handleInputChange("title", e.target.value)}
         placeholder="Nama"
-        className="border border-amber-200 rounded-md px-3 py-2 text-sm bg-white text-amber-900 placeholder-amber-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-100 transition-all flex-1 min-w-0 max-w-[100px]"
+        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[100px]"
         required
         style={{ minWidth: 70 }}
       />
@@ -102,14 +102,14 @@ export default function SocialEditor({
         value={href}
         onChange={(e) => handleInputChange("href", e.target.value)}
         placeholder="URL"
-        className="border border-amber-200 rounded-md px-3 py-2 text-sm bg-white text-amber-900 placeholder-amber-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-100 transition-all flex-1 min-w-0 max-w-[140px]"
+        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[140px]"
         required
         style={{ minWidth: 90 }}
       />
       <select
         value={icon}
         onChange={(e) => handleInputChange("icon", e.target.value)}
-        className="border border-amber-200 rounded-md px-2 py-1 text-sm bg-white text-amber-900"
+        className="border border-gray-500 rounded-md px-2 py-1 text-sm bg-white text-black"
         style={{ minWidth: 60, maxWidth: 80 }}
       >
         {ICONS.map(({ name }) => (
@@ -128,8 +128,8 @@ export default function SocialEditor({
           disabled={isDragging}
           className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
             isDragging
-              ? "bg-amber-100 text-amber-400 cursor-not-allowed"
-              : "bg-amber-300 hover:bg-amber-400 text-amber-900 border border-amber-400 hover:border-amber-500"
+              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
           }`}
           style={{ minWidth: 60 }}
         >
