@@ -191,7 +191,12 @@ export default function Home() {
             ))}
           </div>
           <div className="flex justify-center my-8 text-black">
-            <span>&copy; 2025 Tim Karya Web STEMBAYO</span>
+            <span>&copy; 2025 Tim             <a
+              href="https://karyasija.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >KaryaSija</a></span>
           </div>
         </div>
       </div>

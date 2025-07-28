@@ -35,18 +35,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-50">
+    <div className="min-h-screen flex items-center justify-center bg-[#f6eede]">
       <form
         onSubmit={handleLogin}
-        className="bg-[#f6eede] rounded-xl shadow-lg p-8 flex flex-col gap-5 w-full max-w-sm border border-amber-200"
+        className="bg-[#f6eede] rounded-xl shadow-lg p-8 flex flex-col gap-5 w-full max-w-sm border border-black/10"
       >
-        <h1 className="text-2xl font-bold text-amber-900 mb-2 text-center">
+        <h1 className="text-2xl font-bold text-black mb-2 text-center">
           Login
         </h1>
         <input
           type="text"
           placeholder="Username"
-          className="border border-amber-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-amber-900 placeholder-amber-400"
+          className="border border-gray-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300 bg-white text-black placeholder-gray-400"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -54,13 +54,13 @@ export default function LoginPage() {
         <input
           type="password"
           placeholder="Password"
-          className="border border-amber-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-300 bg-white text-amber-900 placeholder-amber-400"
+          className="border border-gray-200 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300 bg-white text-black placeholder-gray-400"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button
-          className="bg-amber-300 hover:bg-amber-400 text-amber-900 p-2 rounded font-semibold transition-all border border-amber-400 hover:border-amber-500"
+          className="bg-gray-200 hover:bg-gray-300 text-black p-2 rounded font-semibold transition-all border border-gray-400 hover:border-gray-500"
           type="submit"
         >
           Login

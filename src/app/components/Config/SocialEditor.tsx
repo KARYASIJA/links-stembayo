@@ -51,6 +51,7 @@ export default function SocialEditor({
       icon: social.icon,
     });
   }, [social]);
+
   useEffect(() => {
     console.log("[SocialEditor] local state:", { title, href, icon });
   }, [title, href, icon]);
@@ -63,79 +64,116 @@ export default function SocialEditor({
     onChange({ ...social, [field]: value });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (isDragging) return;
     console.log("[SocialEditor] handleDelete", social);
     onDelete(social);
   };
 
   return (
-    <form
-      className="flex flex-wrap items-center gap-2 bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-gray-500 hover:shadow-md hover:border-black transition-all duration-200 relative group max-w-full overflow-x-auto"
-      style={{ minHeight: 52 }}
-      onSubmit={(e) => e.preventDefault()}
+    <div
+      className="bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-gray-500 hover:shadow-md hover:border-black transition-all duration-200 relative group select-none"
+      style={{
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        WebkitTouchCallout: "none",
+        WebkitTapHighlightColor: "transparent",
+      }}
+      {...dragHandleProps}
     >
-      <div
-        {...dragHandleProps}
-        className="text-gray-500 group-hover:text-black cursor-grab select-none mr-2"
-        title="Drag to reorder"
-        style={{ alignSelf: "flex-start", marginTop: 2 }}
-      >
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-          <circle cx="6" cy="7" r="1.5" fill="currentColor" />
-          <circle cx="6" cy="12" r="1.5" fill="currentColor" />
-          <circle cx="6" cy="17" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="7" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="17" r="1.5" fill="currentColor" />
-        </svg>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        <div className="flex items-center gap-2 flex-1">
+          <div
+            className="text-gray-500 group-hover:text-black select-none flex-shrink-0"
+            style={{
+              minWidth: 24,
+              minHeight: 24,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              touchAction: "none",
+            }}
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <circle cx="6" cy="7" r="2" fill="currentColor" />
+              <circle cx="6" cy="12" r="2" fill="currentColor" />
+              <circle cx="6" cy="17" r="2" fill="currentColor" />
+              <circle cx="12" cy="7" r="2" fill="currentColor" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <circle cx="12" cy="17" r="2" fill="currentColor" />
+            </svg>
+          </div>
+
+          <input
+            value={title}
+            onChange={(e) => handleInputChange("title", e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
+            placeholder="Nama"
+            className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0"
+            required
+            style={{
+              touchAction: "manipulation",
+            }}
+          />
+          <input
+            value={href}
+            onChange={(e) => handleInputChange("href", e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
+            placeholder="URL"
+            className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0"
+            required
+            style={{
+              touchAction: "manipulation",
+            }}
+          />
+        </div>
+
+        <div className="flex items-center justify-between sm:justify-end gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2">
+            <select
+              value={icon}
+              onChange={(e) => handleInputChange("icon", e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+              onFocus={(e) => e.stopPropagation()}
+              className="border border-gray-500 rounded-md px-2 py-1 text-sm bg-white text-black"
+              style={{
+                touchAction: "manipulation",
+              }}
+            >
+              {ICONS.map(({ name }) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
+            <span className="text-lg">
+              {ICONS.find((i) => i.name === (icon || "email"))?.icon}
+            </span>
+          </div>
+
+          {onDelete && (
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={isDragging}
+              className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
+                isDragging
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
+              }`}
+              style={{
+                touchAction: "manipulation",
+              }}
+            >
+              Hapus
+            </button>
+          )}
+        </div>
       </div>
-      <input
-        value={title}
-        onChange={(e) => handleInputChange("title", e.target.value)}
-        placeholder="Nama"
-        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[100px]"
-        required
-        style={{ minWidth: 70 }}
-      />
-      <input
-        value={href}
-        onChange={(e) => handleInputChange("href", e.target.value)}
-        placeholder="URL"
-        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[140px]"
-        required
-        style={{ minWidth: 90 }}
-      />
-      <select
-        value={icon}
-        onChange={(e) => handleInputChange("icon", e.target.value)}
-        className="border border-gray-500 rounded-md px-2 py-1 text-sm bg-white text-black"
-        style={{ minWidth: 60, maxWidth: 80 }}
-      >
-        {ICONS.map(({ name }) => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
-      <span className="text-lg ml-1">
-        {ICONS.find((i) => i.name === (icon || "email"))?.icon}
-      </span>
-      {onDelete && (
-        <button
-          type="button"
-          onClick={handleDelete}
-          disabled={isDragging}
-          className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
-            isDragging
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
-          }`}
-          style={{ minWidth: 60 }}
-        >
-          Hapus
-        </button>
-      )}
-    </form>
+    </div>
   );
 }
