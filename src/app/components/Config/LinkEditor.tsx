@@ -56,99 +56,142 @@ export default function LinkEditor({
     setUploading(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (isDragging) return;
     onDelete(link);
   };
 
   return (
-    <form
-      className="flex flex-wrap items-center gap-2 bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-gray-500 hover:shadow-md hover:border-black transition-all duration-200 relative group max-w-full overflow-x-auto"
-      style={{ minHeight: 52 }}
-      onSubmit={(e) => e.preventDefault()}
+    <div
+      className="bg-[#fbf9f3] rounded-lg px-3 py-3 mb-3 shadow-sm border border-gray-500 hover:shadow-md hover:border-black transition-all duration-200 relative group select-none"
+      style={{
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        WebkitTouchCallout: "none",
+        WebkitTapHighlightColor: "transparent",
+      }}
+      {...dragHandleProps}
     >
-      <div
-        {...dragHandleProps}
-        className="text-gray-500 group-hover:text-black cursor-grab select-none mr-2"
-        title="Drag to reorder"
-        style={{ alignSelf: "flex-start", marginTop: 2 }}
-      >
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-          <circle cx="6" cy="7" r="1.5" fill="currentColor" />
-          <circle cx="6" cy="12" r="1.5" fill="currentColor" />
-          <circle cx="6" cy="17" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="7" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-          <circle cx="12" cy="17" r="1.5" fill="currentColor" />
-        </svg>
-      </div>
-      <input
-        value={link.title || ""}
-        onChange={(e) => handleInputChange("title", e.target.value)}
-        placeholder="Judul"
-        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[120px]"
-        required
-        style={{ minWidth: 80 }}
-      />
-      <input
-        value={link.href || ""}
-        onChange={(e) => handleInputChange("href", e.target.value)}
-        placeholder="URL"
-        className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0 max-w-[160px]"
-        required
-        style={{ minWidth: 100 }}
-      />
-      <div className="flex items-center gap-2">
-        <input
-          type="file"
-          accept="image/*"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-        <button
-          type="button"
-          onClick={() => fileInputRef.current?.click()}
-          disabled={uploading || isDragging}
-          className={`px-3 py-2 rounded-md text-xs font-semibold transition-all duration-200 ${
-            uploading || isDragging
-              ? "bg-gray-200 text-black cursor-not-allowed"
-              : "bg-gray-200 hover:bg-gray-300 text-black border border-gray-300 hover:border-gray-400"
-          }`}
-          tabIndex={-1}
-          style={{ minWidth: 60 }}
-        >
-          {uploading ? "⏳" : "📷 Upload"}
-        </button>
-        {link.image && (
-          <img
-            src={link.image}
-            alt="preview"
-            className="w-8 h-8 object-cover rounded-md border border-gray-300 shadow-sm"
-            style={{ minWidth: 32, minHeight: 32 }}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        <div className="flex items-center gap-2 flex-1">
+          <div
+            className="text-gray-500 group-hover:text-black select-none flex-shrink-0"
+            style={{
+              minWidth: 24,
+              minHeight: 24,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              touchAction: "none",
+            }}
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <circle cx="6" cy="7" r="2" fill="currentColor" />
+              <circle cx="6" cy="12" r="2" fill="currentColor" />
+              <circle cx="6" cy="17" r="2" fill="currentColor" />
+              <circle cx="12" cy="7" r="2" fill="currentColor" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <circle cx="12" cy="17" r="2" fill="currentColor" />
+            </svg>
+          </div>
+
+          <input
+            value={link.title || ""}
+            onChange={(e) => handleInputChange("title", e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
+            placeholder="Judul"
+            className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0"
+            required
+            style={{
+              touchAction: "manipulation",
+            }}
           />
-        )}
+          <input
+            value={link.href || ""}
+            onChange={(e) => handleInputChange("href", e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
+            placeholder="URL"
+            className="border border-gray-500 rounded-md px-3 py-2 text-sm bg-white text-black placeholder-gray-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all flex-1 min-w-0"
+            required
+            style={{
+              touchAction: "manipulation",
+            }}
+          />
+        </div>
+
+        <div className="flex items-center justify-between sm:justify-end gap-2 flex-shrink-0">
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+          <div className="flex items-center justify-between sm:justify-end gap-2 flex-shrink-0">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  fileInputRef.current?.click();
+                }}
+                disabled={uploading || isDragging}
+                className={`px-3 py-2 rounded-md text-xs font-semibold transition-all duration-200 ${
+                  uploading || isDragging
+                    ? "bg-gray-200 text-black cursor-not-allowed"
+                    : "bg-gray-200 hover:bg-gray-300 text-black border border-gray-300 hover:border-gray-400"
+                }`}
+                style={{
+                  touchAction: "manipulation",
+                }}
+              >
+                {uploading ? "⏳" : "📷 Upload"}
+              </button>
+              {link.image && (
+                <img
+                  src={link.image}
+                  alt="preview"
+                  className="w-8 h-8 object-cover rounded-md border border-gray-300 shadow-sm"
+                  style={{
+                    touchAction: "manipulation",
+                  }}
+                />
+              )}
+            </div>
+
+            {onDelete && (
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={isDragging}
+                className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
+                  isDragging
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
+                }`}
+                style={{
+                  touchAction: "manipulation",
+                }}
+              >
+                🗑️ Hapus
+              </button>
+            )}
+          </div>
+
+          {uploadError && (
+            <div className="w-full sm:w-auto">
+              <span className="text-red-600 text-xs bg-red-50 px-2 py-1 rounded block">
+                {uploadError}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
-      {uploadError && (
-        <span className="text-red-600 text-xs bg-red-50 px-2 py-1 rounded">
-          {uploadError}
-        </span>
-      )}
-      {onDelete && (
-        <button
-          type="button"
-          onClick={handleDelete}
-          disabled={isDragging}
-          className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
-            isDragging
-              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
-          }`}
-          style={{ minWidth: 60 }}
-        >
-          🗑️ Hapus
-        </button>
-      )}
-    </form>
+    </div>
   );
 }

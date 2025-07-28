@@ -8,6 +8,7 @@ import {
   DndContext,
   closestCenter,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   DragEndEvent,
@@ -200,7 +201,15 @@ export default function ConfigPage() {
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 5 },
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 100,
+        tolerance: 8,
+      },
     })
   );
 
@@ -349,9 +358,6 @@ export default function ConfigPage() {
         fetch("/api/socials").then((res) => res.json()),
       ]);
 
-      // console.log("[ConfigPage] Refetched links:", linksRes);
-      // console.log("[ConfigPage] Refetched socials:", socialsRes);
-
       setLinks(
         linksRes.sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
       );
@@ -423,16 +429,6 @@ export default function ConfigPage() {
             </button>
           </form>
         </div>
-
-        {/*
-        <div className="mb-4 p-4 bg-gray-100 rounded">
-          <h3 className="font-bold">Debug Info:</h3>
-          <p>Socials count: {socials.length}</p>
-          <p>Sorted socials count: {sortedSocials.length}</p>
-          <pre className="text-xs">
-            {JSON.stringify(sortedSocials, null, 2)}
-          </pre>
-        </div> */}
 
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-black border-b-2 border-black pb-2">
           Link Utama
@@ -581,7 +577,6 @@ export default function ConfigPage() {
         >
           💾 Simpan Semua Perubahan
         </button>
-
       </div>
     </div>
   );
@@ -618,7 +613,10 @@ function SortableLinkEditor({
         link={item}
         onChange={onChange}
         onDelete={onDelete}
-        dragHandleProps={{ ...attributes, ...listeners }}
+        dragHandleProps={{
+          ...attributes,
+          ...listeners,
+        }}
         forcedType={forcedType}
         isDragging={globalIsDragging}
       />
@@ -656,7 +654,10 @@ function SortableSocialEditor({
         social={item}
         onChange={onChange}
         onDelete={onDelete}
-        dragHandleProps={{ ...attributes, ...listeners }}
+        dragHandleProps={{
+          ...attributes,
+          ...listeners,
+        }}
         isDragging={globalIsDragging}
       />
     </div>
