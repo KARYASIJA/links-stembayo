@@ -81,7 +81,7 @@ export default function Home() {
                     className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
                     <div className="w-9 h-9 bg-gray-300 rounded-lg" />
-                    <div className="h-6 w-32 bg-gray-300 rounded" />
+                    <div className="lg:ml-[120px] ml-[60px] h-6 w-32 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -93,7 +93,7 @@ export default function Home() {
                     className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
                     <div className="w-9 h-9 bg-gray-300 rounded-lg" />
-                    <div className="h-6 w-24 bg-gray-300 rounded" />
+                    <div className="lg:ml-[120px] ml-[60px] h-6 w-24 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -105,7 +105,7 @@ export default function Home() {
                     className="animate-pulse flex gap-2 items-center max-h-14 p-2 w-full rounded-md bg-gray-100"
                   >
                     <div className="w-9 h-9 bg-gray-300 rounded-lg" />
-                    <div className="h-6 w-20 bg-gray-300 rounded" />
+                    <div className="lg:ml-[120px] ml-[60px] h-6 w-20 bg-gray-300 rounded" />
                   </div>
                 ))}
               </div>
@@ -122,7 +122,17 @@ export default function Home() {
               ))}
             </div>
             <div className="flex justify-center my-8 text-black">
-              <span>&copy; 2025 Tim Karya Web STEMBAYO</span>
+              <span>
+                &copy; 2025 Tim{" "}
+                <a
+                  href="https://karyasija.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  KaryaSija
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -191,12 +201,17 @@ export default function Home() {
             ))}
           </div>
           <div className="flex justify-center my-8 text-black">
-            <span>&copy; 2025 Tim             <a
-              href="https://karyasija.id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >KaryaSija</a></span>
+            <span>
+              &copy; 2025 Tim{" "}
+              <a
+                href="https://karyasija.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                KaryaSija
+              </a>
+            </span>
           </div>
         </div>
       </div>
