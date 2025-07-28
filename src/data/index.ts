@@ -101,26 +101,32 @@ const data: Data = {
     {
       href: 'mailto:info@smkn2depoksleman.sch.id',
       title: 'email',
+      icon: 'email',
     },
     {
       href: 'https://web.facebook.com/stembayolover/',
       title: 'facebook',
+      icon: 'facebook',
     },
     {
       href: 'https://www.linkedin.com/school/smkn2depoksleman/',
       title: 'linkedin',
+      icon: 'linkedin',
     },
     {
       href: 'https://www.youtube.com/@smkn2depoksleman/',
       title: 'youtube',
+      icon: 'youtube',
     },
     {
       href: 'https://www.tiktok.com/@smkn2depoksleman',
       title: 'tiktok',
+      icon: 'tiktok',
     },
     {
       href: 'https://www.instagram.com/smkn2depoksleman.official/',
       title: 'instagram',
+      icon: 'instagram',
     },
   ],
 };
