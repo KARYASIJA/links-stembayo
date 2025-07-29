@@ -20,6 +20,8 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { GiDoor } from "react-icons/gi";
+import { FaFloppyDisk } from "react-icons/fa6";
 
 export default function ConfigPage() {
   const [user, setUser] = useState<any>(null);
@@ -422,10 +424,10 @@ export default function ConfigPage() {
           </p>
           <form onSubmit={handleLogout}>
             <button
-              className="bg-gray-100 hover:bg-gray-200 text-black px-4 py-2 rounded-lg font-semibold transition-all duration-200 border border-gray-300 hover:border-gray-400 ml-4"
+              className="bg-gray-100 flex gap-2 items-center hover:bg-gray-200 text-black px-4 py-2 rounded-lg font-semibold transition-all duration-200 border border-gray-300 hover:border-gray-400 ml-4"
               type="submit"
             >
-              🚪 Logout
+              <GiDoor /> Logout
             </button>
           </form>
         </div>
@@ -573,9 +575,10 @@ export default function ConfigPage() {
 
         <button
           onClick={handleSaveAll}
-          className="w-full bg-gray-100 hover:bg-gray-200 text-black font-bold py-4 rounded-lg mt-8 transition-all duration-200 shadow-md hover:shadow-lg text-lg"
+          className="w-full text-center bg-gray-100 flex gap-2 align-center items-baseline justify-center items-center hover:bg-gray-200 text-black font-bold py-4 rounded-lg mt-8 transition-all duration-200 shadow-md hover:shadow-lg text-lg"
         >
-          💾 Simpan Semua Perubahan
+          <FaFloppyDisk />
+          Simpan Semua Perubahan
         </button>
       </div>
     </div>

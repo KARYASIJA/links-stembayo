@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { FaCamera } from "react-icons/fa";
+import { CgSandClock } from "react-icons/cg";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function LinkEditor({
   link = {},
@@ -150,7 +153,7 @@ export default function LinkEditor({
                   touchAction: "manipulation",
                 }}
               >
-                {uploading ? "⏳" : "📷 Upload"}
+                {uploading ? <CgSandClock /> : <FaCamera />}
               </button>
               {link.image && (
                 <img
@@ -169,7 +172,7 @@ export default function LinkEditor({
                 type="button"
                 onClick={handleDelete}
                 disabled={isDragging}
-                className={`font-semibold px-3 py-2 rounded-md text-xs transition-all duration-200 ${
+                className={`font-semibold px-3 py-2 rounded-md flex gap-2 items-center text-xs transition-all duration-200 ${
                   isDragging
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-gray-300 hover:bg-gray-400 text-gray-900 border border-gray-400 hover:border-gray-500"
@@ -178,7 +181,7 @@ export default function LinkEditor({
                   touchAction: "manipulation",
                 }}
               >
-                🗑️ Hapus
+                <RiDeleteBin5Fill /> Hapus
               </button>
             )}
           </div>
